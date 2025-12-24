@@ -1,0 +1,125 @@
+---
+// ShaderBackground component
+// Renders an animated GLSL shader as a fixed background using Three.js
+---
+
+<canvas id="shader-canvas" transition:persist="shader"></canvas>
+
+<script>
+import * as THREE from 'three';
+import VSVertex from '../shaders/vertex.glsl';
+import FS1 from '../shaders/1.glsl';
+
+// Check if shader is already initialized to prevent re-initialization on page transitions
+if (!(window as any).shaderInitialized) {
+    (window as any).shaderInitialized = true;
+
+    // Create canvas
+    const canvas = document.getElementById('shader-canvas') as HTMLCanvasElement;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Create renderer
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: false
+    });
+    renderer.setSize(canvas.width, canvas.height);
+
+    function updateCanvasRes() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        if (material.uniforms.canvasRes) {
+            material.uniforms.canvasRes.value.set(canvas.width, canvas.height);
+        }
+        renderer.setSize(canvas.width, canvas.height);
+    }
+
+    window.addEventListener('resize', () => {
+        updateCanvasRes();
+    });
+
+    // Create scene, camera, geometry
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(0, 1, 1, 0, 0, 1000);
+    const geometry = new THREE.PlaneGeometry(1, 1).translate(0.5, 0.5, 0);
+
+    // Create material with shader
+    const material = new THREE.ShaderMaterial({
+        uniforms: {
+            canvasRes: { value: new THREE.Vector2(canvas.width, canvas.height) },
+            uTime: { value: 0.0 },
+            uDeltaTime: { value: 0.0 }
+        },
+        vertexShader: VSVertex,
+        fragmentShader: FS1
+    });
+
+    // Create mesh and add to scene
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // Load saved uTime from localStorage to persist across page switches
+    let savedTime = 0;
+    if (typeof localStorage !== 'undefined') {
+        const stored = localStorage.getItem('shaderUTime');
+        savedTime = stored ? parseFloat(stored) : 0;
+    }
+
+    // Animation loop
+    const clock = new THREE.Clock();
+
+    function updateUniforms() {
+        const deltaTime = clock.getDelta();
+        const elapsedTime = clock.getElapsedTime();
+
+        // Add savedTime to elapsedTime so animation continues from where it left off
+        if (material.uniforms.uTime) {
+            material.uniforms.uTime.value = elapsedTime + savedTime;
+        }
+        if (material.uniforms.uDeltaTime) {
+            material.uniforms.uDeltaTime.value = deltaTime;
+        }
+
+    }
+
+    function renderLoop() {
+        requestAnimationFrame(renderLoop);
+        renderer.render(scene, camera);
+        updateUniforms();
+
+    }
+
+    // Save current uTime to localStorage when user navigates away
+    window.addEventListener('beforeunload', () => {
+        console.log(material.uniforms.uTime.value)
+        if (typeof localStorage !== 'undefined' && material.uniforms.uTime) {
+            localStorage.setItem('shaderUTime', material.uniforms.uTime.value.toString());
+        }
+    });
+
+    renderLoop();
+}
+</script>
+
+<style>
+#shader-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: block;
+}
+
+/* Prevent shader from participating in view transition animations */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(shader),
+::view-transition-new(shader) {
+    animation-duration: 0s;
+}
+</style>

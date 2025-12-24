@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.6"
+    "astro": "^5.16.6",
+    "three": "^0.182.0",
+    "vite-plugin-glsl": "^1.5.5"
   }
 }

@@ -1,0 +1,269 @@
+---
+// Website Development work category page
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Website Development - Sankalp Tank">
+	<div class="work-detail-page">
+		<!-- Center preview area -->
+		<div class="preview-container">
+			<div class="preview-content">
+				<h2 id="preview-title"></h2>
+				<p id="preview-text"></p>
+				<img id="preview-image" src="" alt="" />
+			</div>
+		</div>
+
+		<!-- Right side project list -->
+		<div class="scroll-container">
+			<ul class="project-list">
+				<li data-title="Project 1" data-text="Detailed description for project 1 with more context and information about what this project entails." data-image="/placeholder1.jpg">
+					<h2>Project 1</h2>
+					<p>Description for project 1</p>
+				</li>
+				<li data-title="Project 2" data-text="Detailed description for project 2 with more context and information about what this project entails." data-image="/placeholder2.jpg">
+					<h2>Project 2</h2>
+					<p>Description for project 2</p>
+				</li>
+				<li data-title="Project 3" data-text="Detailed description for project 3 with more context and information about what this project entails." data-image="/placeholder3.jpg">
+					<h2>Project 3</h2>
+					<p>Description for project 3</p>
+				</li>
+				<li data-title="Project 4" data-text="Detailed description for project 4 with more context and information about what this project entails." data-image="/placeholder4.jpg">
+					<h2>Project 4</h2>
+					<p>Description for project 4</p>
+				</li>
+				<li data-title="Project 5" data-text="Detailed description for project 5 with more context and information about what this project entails." data-image="/placeholder5.jpg">
+					<h2>Project 5</h2>
+					<p>Description for project 5</p>
+				</li>
+				<li data-title="Project 6" data-text="Detailed description for project 6 with more context and information about what this project entails." data-image="/placeholder6.jpg">
+					<h2>Project 6</h2>
+					<p>Description for project 6</p>
+				</li>
+				<li data-title="Project 7" data-text="Detailed description for project 7 with more context and information about what this project entails." data-image="/placeholder7.jpg">
+					<h2>Project 7</h2>
+					<p>Description for project 7</p>
+				</li>
+				<li data-title="Project 8" data-text="Detailed description for project 8 with more context and information about what this project entails." data-image="/placeholder8.jpg">
+					<h2>Project 8</h2>
+					<p>Description for project 8</p>
+				</li>
+				<li data-title="Project 9" data-text="Detailed description for project 9 with more context and information about what this project entails." data-image="/placeholder9.jpg">
+					<h2>Project 9</h2>
+					<p>Description for project 9</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	// Function to initialize the project preview functionality
+	function initializeProjectPreviews() {
+		// Select all project list items (<li> elements) from the DOM
+		const projectItems = document.querySelectorAll('.project-list li');
+
+		// Get references to the preview area elements where project details will be displayed
+		const previewTitle = document.getElementById('preview-title');
+		const previewText = document.getElementById('preview-text');
+		const previewImage = document.getElementById('preview-image') as HTMLImageElement | null;
+
+		// Track which project is currently "locked" (clicked/selected)
+		// When null, hovering works normally. When set, preview stays locked to that project
+		let selectedProject: Element | null = null;
+
+		// UPDATE PREVIEW: Updates the center preview area with project details
+		function updatePreview(item: Element) {
+			// Extract data from the item's data attributes (data-title, data-text, data-image)
+			const title = (item as HTMLElement).dataset.title || '';
+			const text = (item as HTMLElement).dataset.text || '';
+			const image = (item as HTMLElement).dataset.image || '';
+
+			// Update the preview title text
+			if (previewTitle) previewTitle.textContent = title;
+
+			// Update the preview description text
+			if (previewText) previewText.textContent = text;
+
+			// Update the preview image and make it visible
+			if (previewImage) {
+				previewImage.src = image; // Set image source URL
+				previewImage.alt = title; // Set alt text for accessibility
+				previewImage.style.display = 'block'; // Make image visible
+			}
+		}
+
+		// RESET PREVIEW: Clears all content from the preview area
+		function resetPreview() {
+			// Clear the title
+			if (previewTitle) previewTitle.textContent = '';
+
+			// Clear the description text
+			if (previewText) previewText.textContent = '';
+
+			// Hide the image
+			if (previewImage) previewImage.style.display = 'none';
+		}
+
+		// Loop through each project item and attach event listeners
+		projectItems.forEach(item => {
+			// HOVER EFFECT: When mouse enters a project item
+			item.addEventListener('mouseenter', () => {
+				// Only update preview on hover if no project is currently locked/selected
+				if (!selectedProject) {
+					console.log('Hovering over:', item);
+					updatePreview(item);
+				}
+			});
+
+			// CLICK EFFECT: When user clicks a project item
+			item.addEventListener('click', () => {
+				// If clicking the already-selected item, deselect it
+				if (selectedProject === item) {
+					selectedProject = null; // Clear the selection
+					item.classList.remove('selected'); // Remove visual highlight
+				} else {
+					// Clicking a different item - make this the new selection
+
+					// First, remove the 'selected' class from previously selected item
+					if (selectedProject) {
+						selectedProject.classList.remove('selected');
+					}
+
+					// Then, set this item as the new selection
+					selectedProject = item;
+					item.classList.add('selected'); // Add visual highlight
+					updatePreview(item); // Update the preview area with this project's info
+				}
+			});
+		});
+
+		// MOUSE LEAVE HANDLING: When mouse leaves the entire project list area
+		const scrollContainer = document.querySelector('.scroll-container');
+		scrollContainer?.addEventListener('mouseleave', () => {
+			// Only clear the preview if nothing is locked/selected
+			// If a project is selected, keep showing its preview
+			if (!selectedProject) {
+				resetPreview();
+			}
+		});
+	}
+
+	// Initialize on first page load
+	initializeProjectPreviews();
+
+	// Re-initialize after client-side navigation (view transitions)
+	document.addEventListener('astro:page-load', () => {
+		initializeProjectPreviews();
+	});
+</script>
+
+<style>
+	.work-detail-page {
+		display: flex;
+		height: 100%;
+		gap: 2rem;
+	}
+
+	/* Center preview area */
+	.preview-container {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.preview-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		max-width: 600px;
+		text-align: center;
+	}
+
+	#preview-title {
+		font-size: 2.5rem;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	#preview-text {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		opacity: 0.9;
+		margin: 0;
+	}
+
+	#preview-image {
+		max-width: 100%;
+		max-height: 400px;
+		border-radius: 8px;
+		display: none;
+		object-fit: contain;
+	}
+
+	/* Right side project list */
+	.scroll-container {
+		width: auto;
+		min-width: 300px;
+		max-height: 100vh;
+		overflow-y: scroll;
+		scrollbar-width: none;
+		scrollbar-color: #fff transparent;
+	}
+
+	.scroll-container::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	.scroll-container::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scroll-container::-webkit-scrollbar-thumb {
+		background-color: #fff;
+		border-radius: 4px;
+	}
+
+	.project-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 0;
+		margin: 0;
+	}
+
+	.project-list li {
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+		padding: 1rem;
+		border-radius: 4px;
+	}
+
+	.project-list li:hover {
+		opacity: 0.7;
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.project-list li.selected {
+		background-color: rgba(255, 255, 255, 0.1);
+		opacity: 1;
+	}
+
+	.project-list li h2 {
+		font-size: 1.75rem;
+		margin: 0 0 0.5rem 0;
+		font-weight: normal;
+	}
+
+	.project-list li p {
+		font-size: 1rem;
+		opacity: 0.7;
+		margin: 0;
+	}
+</style>

@@ -1,0 +1,80 @@
+---
+// Work page component
+// Displays work categories with "compelling headline" placeholders on the right
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Work - Sankalp Tank">
+	<!-- Work page wrapper using flexbox for layout -->
+	<div class="work-page">
+		<!-- Left side: Work categories list using flexbox -->
+		<section class="categories">
+			<ul>
+				<li><a href="/work/website-development">Website Development</a></li>
+				<li><a href="/work/data-science">Data Science</a></li>
+				<li><a href="/work/art">Art</a></li>
+				<li><a href="/work/writing">Writing</a></li>
+			</ul>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	/* Work page wrapper using flexbox for horizontal layout */
+	.work-page {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		height: 100%;
+		flex: 1;
+		gap: 4rem;
+	}
+
+	/* Categories section using flexbox */
+	.categories {
+		display: flex;
+		align-items: center;
+		overflow: scroll;
+		scrollbar-width: none;
+		scroll-snap-type: mandatory;
+		scroll-margin-block-start: 20px;
+	}
+
+	/* Categories list styling */
+	.categories ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.categories li {
+		font-size: 1.75rem;
+		letter-spacing: 0.05em;
+	}
+
+	.categories a {
+		color: #fff;
+		text-decoration: none;
+		transition: opacity 0.1s ease-in-out;
+	}
+
+	.categories a:hover {
+		opacity: 0.7;
+	}
+
+	/* Work headlines section using flexbox */
+	.work-headlines {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	/* Individual headline styling */
+	.work-headlines h2 {
+		font-size: 2.5rem;
+		font-weight: normal;
+		line-height: 1.2;
+		text-align: right;
+	}
+</style>

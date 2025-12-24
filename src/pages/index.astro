@@ -1,16 +1,57 @@
 ---
-
+// Home page component
+// Displays repeating "compelling headline" text on the right side
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Sankalp Tank - Developer & Designer">
+	<!-- Main content wrapper using flexbox to align content to the right -->
+	<div class="home-content">
+		<section class="intro-text">
+			<p>
+				Programming can be a tool for immense creative output, but too often
+				these artistic opportunities are not capitalized upon. I am pursuing
+				a diffusion of efficiency and aesthetics through experimentation.
+			</p>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	/* Home page content wrapper using flexbox */
+	.home-content {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		height: 100%;
+		flex: 1;
+		padding-bottom: 2rem;
+		padding-right: 2rem;
+	}
+
+	/* Intro text section styling */
+	.intro-text {
+		max-width: 600px;
+		text-align: right;
+	}
+
+	.intro-text p {
+		font-size: 1.5rem;
+		line-height: 1.6;
+	}
+
+	/* Container for headlines using flexbox for vertical layout */
+	.headlines {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	/* Individual headline styling */
+	.headlines h2 {
+		font-size: 2.5rem;
+		font-weight: normal;
+		line-height: 1.2;
+		text-align: right;
+	}
+</style>
