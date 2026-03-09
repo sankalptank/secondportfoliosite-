@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sankalp Tank – Resume</title>
+
+<style>
+/* ------------------- Base ------------------- */
+:root {
+  --accent: #007b83;
+  --text: #222;
+  --muted: #666;
+  --border: #ddd;
+  --sidebar-width: 34%;
+  --font: "Proxima Nova", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-family: "proxima-nova", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0;
+  color: var(--text);
+  background: #fafafa;
+  line-height: 1.5;
+}
+
+/* ------------------- Layout ------------------- */
+.resume {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #f1f1f1;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.main {
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  background: white;
+}
+
+/* ------------------- Sidebar ------------------- */
+.name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 0.1rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0 0 0.1rem;
+}
+
+.subtitle {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2rem 0 0.5rem;
+}
+
+.contact, .skills, .languages {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.contact div {
+  margin-bottom: 0.4rem;
+}
+
+.skills ul, .languages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills li, .languages li {
+  margin: 0.3rem 0;
+}
+
+/* ------------------- Main Content ------------------- */
+h2 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.job, .school {
+  margin-bottom: 1.5rem;
+}
+
+.exp_head {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.exp_sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.job h3, .school h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.desc ul {
+  margin: 0.4rem 0 0 1rem;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.8rem 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<main class="resume">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="header">
+      <h1 class="name">Sankalp Tank</h1>
+      <p class="title">Data Science & Design</p>
+      <p class="subtitle">Senior at Raleigh Charter High School</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Contact</h3>
+      <div class="contact">
+        <div>sankalp.tank@gmail.com</div>
+        <div>sankalptank.com</div>
+        <div>+1 984 220-2198</div>
+        <div>Raleigh, North Carolina</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Skills</h3>
+      <div class="skills">
+        <ul>
+          <li>Python / Pandas / OpenAI API / Git</li>
+          <li>Javascript / HTML / CSS / GLSL / Java</li>
+          <li>React / Astro / Next.Js</li>
+          <li>Adobe Photoshop / Adobe Premiere / Blender</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <section class="main">
+    <h2>Profile</h2>
+    <p class="desc">I design, build, and deploy data-driven web applications and visualizations. My work integrates design sensibility with technical rigor, creating interfaces that are both performant and visually engaging.</p>
+    <p class="desc">I work at the intersection of art and engineering, where aesthetics and efficiency are equally valued. My technical focus centers on optimization in data science workflows, user experience, and web performance. Ultimately, I want to push the boundaries of computer science by merging it with art and design to create both technically optimal and aesthetic experiences.</p>
+    <hr>
+
+    <h2>Experience</h2>
+    
+    <div class="experience_section">
+        <h3 class="exp_head">Internships and Research</h3>
+        <p class="exp_sub"></p>
+        <div class="job">
+            <h3>Breast Cancer Research - Regenesis MD</h3>
+            <p class="meta">Oct 2025 – Present</p>
+            <div class="desc">
+                <ul>
+                <li>Worked with physician to analyze trends in patients taking medication and its effects on breast cancer rates.</li>
+                <li>Utilized 150+ individual patient cases to assess the practicality of this medication.</li>
+                <li>Ongoing research to support claims of efficacy in breast cancer reduction for a research paper.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>Data Retrieval Optimization Independant Research</h3>
+            <p class="meta">Jun 2025 – Sep 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Independant research mentored by PhD canidate from Cambridge University to optimize data retrieval on large datasets for generative AI applications.</li>
+                <li>Research paper titiled "How Can Disparate Retrieval Methods Work Together Effectively?" pending publication and findings presented at the IJSCAR Fall Research Symposium 2025.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>Industrial Design Lab</h3>
+            <p class="meta">Jun 2025 – Sep 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Through the North Carolina State University College of Design, I developed a prototype of a hand brace to assist stroke-victims with impared mobility and strength.</li>
+                <li>Created mockups with wireframes and researched existing solutions prior to developing a modular-based prototype.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>Multimedia Content Production - Red Cross</h3>
+            <p class="meta">Jan 2025 – May 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Produced multimedia content showcasing Red Cross disaster relief to Hurricane Helene across North Carolina.</li>
+                <li>Media utilized during fundraising events to demonsrate the Red Cross' mission and generate donor engagement.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>Biometrics Data Analysis - Valencell</h3>
+            <p class="meta">Aug 2024 – Dec 2024</p>
+            <div class="desc">
+                <ul>
+                <li>Analyzed photoplethysmography (ppg) data of hundreds of participants and by observing trends created a machine learning algorithm that determined optimal prediction parameters.</li>
+                <li>Applied statistical clustering to group participants by biomarkers and demographics.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="experience_section">
+        <h3 class="exp_head">Web Development Contracts</h3>
+        <p class="exp_sub"></p>
+        <div class="job">
+            <h3>The T-Room</h3>
+            <p class="meta">Oct 2025 – Present</p>
+            <div class="desc">
+                <ul>
+                <li>Currently designing and developing a website and storefront for an upcoming multi-location anti-aging clinic. </li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="job">
+            <h3>Brick & Motors</h3>
+            <p class="meta">Jul 2025 – Sep 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Designed and developed a marketing and registration website for a small buisness based in New Jersey that hosts STEM summer programs and workshops for elementary and middle school students.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="job">
+            <h3>Streams Of Restoration</h3>
+            <p class="meta">Jan 2025 – Mar 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Redesigned and optimized womens health website and blog.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>J1 Development Studio</h3>
+            <p class="meta">Jan 2025 – Feb 2025</p>
+            <div class="desc">
+                <ul>
+                <li>Worked with the J1 game design-team to help design, develop, and deploy an article automation system and website to display programming tutorials and upcoming news on J1 games.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="experience_section">
+        <h3 class="exp_head">Data Science Gig Work</h3>
+        <p class="exp_sub"></p>
+        <div class="job">
+            <h3>Library Recommendation System - Westcreek Public School</h3>
+            <p class="meta">Jul 2024 – Nov 2024</p>
+            <div class="desc">
+                <ul>
+                <li>Designed, developed, and deployed a bespoke book recommendation software application for Westcreek's school library.</li>
+                <li>Developed a mobile and web-based portal to host this application.</li>
+                <li>Maintained and updated software based on usage statistics and client feedback.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="job">
+            <h3>Financial Analysis - Avance Care North Raleigh</h3>
+            <p class="meta">Aug 2024 – Oct 2024</p>
+            <div class="desc">
+                <ul>
+                <li>Performed buisness analytics to forecast revenue and optimze services.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
