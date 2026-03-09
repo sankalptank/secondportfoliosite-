@@ -69,6 +69,8 @@ const { title } = Astro.props;
 		padding: 0;
 		box-sizing: border-box;
 		transition: opacity 0.1s ease-in-out;
+				font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 	}
 
 	body {
@@ -76,16 +78,31 @@ const { title } = Astro.props;
 		background-color: #000;
 		color: #fff;
 		min-height: 100vh;
+		height: 100vh;
 		position: relative;
-		padding: 2rem;
+		padding: 1rem;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px) {
+		body {
+			padding: 2rem;
+		}
 	}
 
 	/* Frame border container */
 	.frame-border {
 		position: relative;
-		min-height: calc(100vh - 4rem);
+		height: calc(100vh - 2rem);
 		border: 1px solid #fff;
 		z-index: 1;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px) {
+		.frame-border {
+			height: calc(100vh - 4rem);
+		}
 	}
 
 	/* Dark mask for the area outside the frame border */
@@ -96,16 +113,29 @@ const { title } = Astro.props;
 		width: 100vw;
 		height: 100vh;
 		pointer-events: none;
-		z-index: 0;
-		box-shadow: inset 0 0 0 2rem rgba(0, 0, 0, 0.5);
+		z-index: 10;
+		box-shadow: inset 0 0 0 1rem rgba(0, 0, 0, 0.5);
+	}
+
+	@media (min-width: 768px) {
+		.outer-mask {
+			box-shadow: inset 0 0 0 2rem rgba(0, 0, 0, 0.65);
+		}
 	}
 
 	/* Main site wrapper using flexbox for layout */
 	.site-wrapper {
 		display: flex;
-		min-height: calc(100vh - 8rem);
+		flex-direction: column;
+		height: 100%;
 		position: relative;
 		z-index: 1;
+	}
+
+	@media (min-width: 768px) {
+		.site-wrapper {
+			flex-direction: row;
+		}
 	}
 
 	/* Navigation sidebar styles */
@@ -113,10 +143,20 @@ const { title } = Astro.props;
 		/* Flexbox for vertical layout */
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
-		min-width: 300px;
-		padding-left: 2rem;
-		padding-top: 2rem;
+		gap: 1.5rem;
+		min-width: auto;
+		padding: 1rem;
+		border-bottom: 1px solid #fff;
+	}
+
+	@media (min-width: 768px) {
+		.main-nav {
+			gap: 4rem;
+			min-width: 300px;
+			padding-left: 2rem;
+			padding-top: 2rem;
+			border-bottom: none;
+		}
 	}
 
 	/* Header section within nav */
@@ -127,36 +167,62 @@ const { title } = Astro.props;
 	}
 
 	.name {
-		font-size: 2.5rem;
+		font-size: 1.75rem;
 		font-weight: normal;
 		line-height: 1.1;
 	}
 
 	.subtitle {
-		font-size: 1.25rem;
+		font-size: 1rem;
 		font-weight: normal;
 		line-height: 1.3;
 	}
 
 	.location {
-		font-size: 1rem;
-		margin-top: 1rem;
+		font-size: 0.875rem;
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.name {
+			font-size: 2.5rem;
+		}
+
+		.subtitle {
+			font-size: 1.25rem;
+		}
+
+		.location {
+			font-size: 1rem;
+			margin-top: 1rem;
+		}
 	}
 
 	/* Navigation links list */
 	.nav-links {
 		list-style: none;
 		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
+		flex-direction: row;
+		gap: 1rem;
 	}
 
 	.nav-links a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 1.5rem;
+		font-size: 1.125rem;
 		position: relative;
 		display: inline-block;
+	}
+
+	@media (min-width: 768px) {
+		.nav-links {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.nav-links a {
+			font-size: 1.5rem;
+		}
 	}
 
 	/* Active link indicator using flexbox pseudo-element */
@@ -190,7 +256,7 @@ const { title } = Astro.props;
 	.work-section {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 2rem;
 		justify-content: center;
 		flex: 1;
 	}
@@ -198,24 +264,48 @@ const { title } = Astro.props;
 	/* Individual work item using flexbox */
 	.work-item {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
+		gap: 0.5rem;
+		align-items: flex-start;
 	}
 
 	.work-item h2 {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: normal;
 	}
 
 	.work-item p {
-		font-size: 1.5rem;
-		text-align: right;
+		font-size: 1.125rem;
+		text-align: left;
+	}
+
+	@media (min-width: 768px) {
+		.work-section {
+			gap: 3rem;
+		}
+
+		.work-item {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.work-item h2 {
+			font-size: 2rem;
+		}
+
+		.work-item p {
+			font-size: 1.5rem;
+			text-align: right;
+		}
 	}
 
 	/* Contact page specific styles */
 	.contact-content {
 		display: flex;
+		flex-direction: column;
 		height: 100%;
+		gap: 2rem;
 	}
 
 	/* Left side with text content */
@@ -226,7 +316,7 @@ const { title } = Astro.props;
 	}
 
 	.contact-text p {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		line-height: 1.6;
 		max-width: 600px;
 	}
@@ -234,22 +324,50 @@ const { title } = Astro.props;
 	/* Right side with social icons */
 	.contact-social {
 		display: flex;
-		align-items: flex-end;
-		gap: 2rem;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
 	}
 
 	.social-icon {
-		width: 80px;
-		height: 80px;
+		width: 60px;
+		height: 60px;
 		background-color: #fff;
-		border-radius: 20px;
+		border-radius: 15px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.social-icon img {
-		width: 50px;
-		height: 50px;
+		width: 35px;
+		height: 35px;
+	}
+
+	@media (min-width: 768px) {
+		.contact-content {
+			flex-direction: row;
+		}
+
+		.contact-text p {
+			font-size: 1.5rem;
+		}
+
+		.contact-social {
+			align-items: flex-end;
+			gap: 2rem;
+		}
+
+		.social-icon {
+			width: 80px;
+			height: 80px;
+			border-radius: 20px;
+		}
+
+		.social-icon img {
+			width: 50px;
+			height: 50px;
+		}
 	}
 </style>

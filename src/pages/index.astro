@@ -21,37 +21,63 @@ import Layout from '../layouts/Layout.astro';
 	/* Home page content wrapper using flexbox */
 	.home-content {
 		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
-		height: 100%;
+		justify-content: center;
+		align-items: center;
 		flex: 1;
-		padding-bottom: 2rem;
-		padding-right: 2rem;
+		padding: 1rem;
 	}
 
 	/* Intro text section styling */
 	.intro-text {
-		max-width: 600px;
-		text-align: right;
+		max-width: 100%;
+		text-align: center;
 	}
 
 	.intro-text p {
-		font-size: 1.5rem;
+		font-size: 1.125rem;
 		line-height: 1.6;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	}
 
 	/* Container for headlines using flexbox for vertical layout */
 	.headlines {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 1.5rem;
 	}
 
 	/* Individual headline styling */
 	.headlines h2 {
-		font-size: 2.5rem;
+		font-size: 1.75rem;
 		font-weight: normal;
 		line-height: 1.2;
-		text-align: right;
+		text-align: center;
+	}
+
+	@media (min-width: 768px) {
+		.home-content {
+			justify-content: flex-end;
+			align-items: flex-end;
+			padding-right: 2rem;
+			padding-bottom: 2rem;
+		}
+
+		.intro-text {
+			max-width: 40vw;
+			text-align: right;
+		}
+
+		.intro-text p {
+			font-size: 1.5rem;
+		}
+
+		.headlines {
+			gap: 2rem;
+		}
+
+		.headlines h2 {
+			font-size: 2.5rem;
+			text-align: right;
+		}
 	}
 </style>

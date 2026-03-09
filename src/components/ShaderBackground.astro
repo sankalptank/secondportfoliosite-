@@ -19,11 +19,14 @@ if (!(window as any).shaderInitialized) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Create renderer
+    // Create renderer with mobile optimization
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: false
     });
+    // Limit pixel ratio on mobile devices for better performance
+    const pixelRatio = Math.min(window.devicePixelRatio, 2);
+    renderer.setPixelRatio(pixelRatio);
     renderer.setSize(canvas.width, canvas.height);
 
     function updateCanvasRes() {
@@ -48,6 +51,7 @@ if (!(window as any).shaderInitialized) {
     const material = new THREE.ShaderMaterial({
         uniforms: {
             canvasRes: { value: new THREE.Vector2(canvas.width, canvas.height) },
+            uPixelRatio: { value: pixelRatio },
             uTime: { value: 0.0 },
             uDeltaTime: { value: 0.0 }
         },
@@ -94,7 +98,7 @@ if (!(window as any).shaderInitialized) {
     window.addEventListener('beforeunload', () => {
         console.log(material.uniforms.uTime.value)
         if (typeof localStorage !== 'undefined' && material.uniforms.uTime) {
-            localStorage.setItem('shaderUTime', material.uniforms.uTime.value.toString());
+            localStorage.setItem('shaderUTime', (material.uniforms.uTime.value - 0).toString());
         }
     });
 

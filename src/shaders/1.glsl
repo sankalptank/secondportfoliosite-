@@ -1,21 +1,23 @@
 #include "Functions.glsl"
 uniform vec2 canvasRes;
+uniform float uPixelRatio;
 uniform float uTime;
 uniform float uDeltaTime;
 varying vec2 vUv;
 
 
 void main() {
-    // Normalize aspect ratio - adjust UV coordinates to prevent distortion on non-square canvases
-    vec2 aspectRatio = vec2(canvasRes.x / canvasRes.y, 1.0);
-    vec2 uv = vUv * aspectRatio;
+    // Use pixel coordinates with fixed reference scale for resolution independence
+    // Divide by pixelRatio to normalize device pixels to CSS pixels,
+    // then scale: x by 1/1080 and y by 2/1080 to match original proportions
+    vec2 uv = gl_FragCoord.xy / (uPixelRatio * 1080.0) * vec2(1.0, 2.0);
 
 
 
 
     // Generate animated simplex noise that varies over space and time
     // Higher multiplier (2.0) creates more detailed noise pattern
-    float n = snoise(uv * 1.0 + uTime/3.0);
+    float n = snoise(uv * 0.5 + uTime/5.0);
 
     // Create a repeating grid of 70 cells, warped by noise
     float gridSize = 300.0;

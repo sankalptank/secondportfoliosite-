@@ -1,80 +1,360 @@
 ---
-// Work page component
-// Displays work categories with "compelling headline" placeholders on the right
+// Work page - unified project list with category tags
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Work - Sankalp Tank">
-	<!-- Work page wrapper using flexbox for layout -->
-	<div class="work-page">
-		<!-- Left side: Work categories list using flexbox -->
-		<section class="categories">
-			<ul>
-				<li><a href="/work/website-development">Website Development</a></li>
-				<li><a href="/work/data-science">Data Science</a></li>
-				<li><a href="/work/art">Art</a></li>
-				<li><a href="/work/writing">Writing</a></li>
+	<div class="work-detail-page">
+		<!-- Center preview area -->
+		<div class="preview-container">
+			<div class="preview-content">
+				<h2 id="preview-title"></h2>
+				<p id="preview-text"></p>
+				<img id="preview-image" src="" alt="" />
+			</div>
+		</div>
+
+		<!-- Right side project list, most recent first -->
+		<div class="scroll-container">
+			<ul class="project-list">
+				<li data-title="Breast Cancer Research - Regenesis MD" data-text="" data-image="">
+					<div class="project-header">
+						<h2>Breast Cancer Research</h2>
+						<span class="tag">data</span>
+					</div>
+					<p>@ Regenesis MD / Present</p>
+				</li>
+				<li data-title="Brick & Motors" data-text="" data-image="">
+					<div class="project-header">
+						<h2>bricksandmotors.org</h2>
+						<span class="tag">webdev</span>
+					</div>
+					<p>Sep 2025</p>
+				</li>
+				<li data-title="Information Retrieval Optimization" data-text="Investigated hybrid retrieval architectures for large-scale generative AI systems, benchmarking sparse methods (TF-IDF, BM25, SUPER_BM25) against dense methods (SPLADE, ColBERT). Designed a hybrid funnel retrieval system that reduced indexing time by 23.7% and query time by 99% compared to ColBERT alone, while maintaining comparable recall. Published in the American Journal of Student Research, Vol. 3, Issue 6 (Nov 2025)." data-image="">
+					<div class="project-header">
+						<h2>Information Retrieval Optimization Research</h2>
+						<span class="tag">data</span>
+						<span class="tag">paper</span>
+					</div>
+					<p>Sep 2025</p>
+				</li>
+				<li data-title="Multimedia Content Production - Red Cross" data-text="" data-image="">
+					<div class="project-header">
+						<h2>Red Cross Multimedia Production</h2>
+						<span class="tag">prod</span>
+					</div>
+					<p>May 2025</p>
+				</li>
+				<li data-title="A Systems Approach to Short-Termism in United States Politics" data-text="" data-image="">
+					<div class="project-header">
+						<h2>Short-Termism in US Politics</h2>
+						<span class="tag">paper</span>
+					</div>
+					<p>Apr 2025</p>
+				</li>
+				<li data-title="J1 Development Studio" data-text="" data-image="">
+					<div class="project-header">
+						<h2>J1 Development Studio</h2>
+						<span class="tag">webdev</span>
+					</div>
+					<p>Feb 2025</p>
+				</li>
+				<li data-title="Westcreek Public School" data-text="" data-image="">
+					<div class="project-header">
+						<h2>Westcreek Public School Library Recommendation System</h2>
+						<span class="tag">data</span>
+					</div>
+					<p>Nov 2024</p>
+				</li>
+				<li data-title="Avance Care North Raleigh" data-text="" data-image="">
+					<div class="project-header">
+						<h2>Avance Care North Raleigh Financial Analysis</h2>
+						<span class="tag">data</span>
+					</div>
+					<p>Oct 2024</p>
+				</li>
 			</ul>
-		</section>
+		</div>
 	</div>
 </Layout>
 
-<style>
-	/* Work page wrapper using flexbox for horizontal layout */
-	.work-page {
-		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
-		height: 100%;
-		flex: 1;
-		gap: 4rem;
+<script>
+	function initializeProjectPreviews() {
+		const projectItems = document.querySelectorAll('.project-list li');
+		const previewTitle = document.getElementById('preview-title');
+		const previewText = document.getElementById('preview-text');
+		const previewImage = document.getElementById('preview-image') as HTMLImageElement | null;
+		let selectedProject: Element | null = null;
+
+		function updatePreview(item: Element) {
+			const title = (item as HTMLElement).dataset.title || '';
+			const text = (item as HTMLElement).dataset.text || '';
+			const image = (item as HTMLElement).dataset.image || '';
+
+			if (previewTitle) previewTitle.textContent = title;
+			if (previewText) previewText.textContent = text;
+
+			if (previewImage) {
+				if (image) {
+					previewImage.src = image;
+					previewImage.alt = title;
+					previewImage.style.display = 'block';
+				} else {
+					previewImage.style.display = 'none';
+				}
+			}
+		}
+
+		function resetPreview() {
+			if (previewTitle) previewTitle.textContent = '';
+			if (previewText) previewText.textContent = '';
+			if (previewImage) previewImage.style.display = 'none';
+		}
+
+		projectItems.forEach(item => {
+			item.addEventListener('mouseenter', () => {
+				if (!selectedProject) {
+					updatePreview(item);
+				}
+			});
+
+			item.addEventListener('click', () => {
+				if (selectedProject === item) {
+					selectedProject = null;
+					item.classList.remove('selected');
+				} else {
+					if (selectedProject) {
+						selectedProject.classList.remove('selected');
+					}
+					selectedProject = item;
+					item.classList.add('selected');
+					updatePreview(item);
+				}
+			});
+		});
+
+		const scrollContainer = document.querySelector('.scroll-container');
+		scrollContainer?.addEventListener('mouseleave', () => {
+			if (!selectedProject) {
+				resetPreview();
+			}
+		});
 	}
 
-	/* Categories section using flexbox */
-	.categories {
+	function initializePageScroll() {
+		const scrollContainer = document.querySelector('.scroll-container');
+		if (!scrollContainer) return;
+
+		document.addEventListener('wheel', (e) => {
+			scrollContainer.scrollTop += e.deltaY * 4;
+			e.preventDefault();
+		}, { passive: false });
+	}
+
+	initializeProjectPreviews();
+	initializePageScroll();
+
+	document.addEventListener('astro:page-load', () => {
+		initializeProjectPreviews();
+		initializePageScroll();
+	});
+</script>
+
+<style>
+	.work-detail-page {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		gap: 1rem;
+	}
+
+	/* Detail preview area */
+	.preview-container {
+		flex: 2;
 		display: flex;
 		align-items: center;
-		overflow: scroll;
-		scrollbar-width: none;
-		scroll-snap-type: mandatory;
-		scroll-margin-block-start: 20px;
+		justify-content: center;
+		padding: 1rem;
+		min-height: 200px;
 	}
 
-	/* Categories list styling */
-	.categories ul {
+	.preview-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 1rem;
+		max-width: 100%;
+		text-align: left;
+	}
+
+	#preview-title {
+		font-size: 1.5rem;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	#preview-text {
+		font-size: 1rem;
+		line-height: 1.6;
+		opacity: 0.9;
+		margin: 0;
+	}
+
+	#preview-image {
+		max-width: 100%;
+		max-height: 250px;
+		border-radius: 8px;
+		display: none;
+		object-fit: contain;
+	}
+
+	/* Right side project list */
+	.scroll-container {
+		width: 100%;
+		min-width: auto;
+		max-height: 50vh;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		scrollbar-color: #fff transparent;
+		padding: 0 1rem;
+	}
+
+	.scroll-container::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	.scroll-container::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scroll-container::-webkit-scrollbar-thumb {
+		background-color: #fff;
+		border-radius: 4px;
+	}
+
+	.project-list {
+		padding-top: 0rem;
 		list-style: none;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 13rem;
+		margin: 0;
 	}
 
-	.categories li {
-		font-size: 1.75rem;
-		letter-spacing: 0.05em;
-	}
-
-	.categories a {
-		color: #fff;
-		text-decoration: none;
-		transition: opacity 0.1s ease-in-out;
-	}
-
-	.categories a:hover {
-		opacity: 0.7;
-	}
-
-	/* Work headlines section using flexbox */
-	.work-headlines {
+	.project-list li {
+		cursor: pointer;
+		transition: all 0.5s ease;
+		padding: 0.75rem;
+		border-radius: 4px;
+		background-color: rgba(0, 0, 0, 0.3);
+		min-height: 5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		justify-content: center;
 	}
 
-	/* Individual headline styling */
-	.work-headlines h2 {
-		font-size: 2.5rem;
+	.project-list li:hover {
+		opacity: 0.7;
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.project-list li.selected {
+		background-color: rgba(255, 255, 255, 0.1);
+		opacity: 1;
+	}
+
+	.project-header {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.project-header h2 {
+		flex: 1;
+		font-size: 1.25rem;
+		margin: 0;
 		font-weight: normal;
-		line-height: 1.2;
-		text-align: right;
+	}
+
+	.tag {
+		font-size: 0.625rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		padding: 0.15rem 0.4rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 2px;
+		opacity: 0.6;
+	}
+
+	.project-list li p {
+		font-size: 0.875rem;
+		opacity: 0.7;
+		margin: 0;
+	}
+
+	@media (min-width: 768px) {
+		.work-detail-page {
+			flex-direction: row;
+			gap: 2rem;
+		}
+
+		.preview-container {
+			padding: 2rem 3rem;
+			min-height: auto;
+		}
+
+		.preview-content {
+			gap: 1.5rem;
+			max-width: 500px;
+		}
+
+		#preview-title {
+			font-size: 2.5rem;
+		}
+
+		#preview-text {
+			font-size: 1.25rem;
+		}
+
+		#preview-image {
+			max-height: 400px;
+		}
+
+		.scroll-container {
+			width: auto;
+			min-width: 280px;
+			max-width: 350px;
+			max-height: 100vh;
+			padding: 0 1rem 0 0;
+		}
+
+		.project-list {
+			gap: 2rem;
+			padding-top: 13rem;
+		}
+
+		.project-list li {
+			padding: 1rem;
+		}
+
+		.project-header h2 {
+			font-size: 1.75rem;
+			margin: 0;
+		}
+
+		.tag {
+			font-size: 0.7rem;
+		}
+
+		.project-list li p {
+			font-size: 1rem;
+		}
 	}
 </style>
