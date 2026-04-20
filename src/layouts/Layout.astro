@@ -44,9 +44,9 @@ const { title } = Astro.props;
 
 					<!-- Navigation links -->
 					<ul class="nav-links">
-						<li><a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>{Astro.url.pathname === "/" ? "•" : "Home"}</a></li>
-						<li><a href="/work" class={Astro.url.pathname === "/work" ? "active" : ""}>{Astro.url.pathname === "/work" ? "•" : "Work"}</a></li>
-						<li><a href="/contact" class={Astro.url.pathname === "/contact" ? "active" : ""}>{Astro.url.pathname === "/contact" ? "•" : "Contact"}</a></li>
+						<li><a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a></li>
+						<li><a href="/work" class={Astro.url.pathname === "/work" ? "active" : ""}>Work</a></li>
+						<li><a href="/contact" class={Astro.url.pathname === "/contact" ? "active" : ""}>Contact</a></li>
 					</ul>
 				</nav>
 

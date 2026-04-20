@@ -174,7 +174,6 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 					item.classList.add('selected');
 					updatePreview(item);
 				}
-				document.querySelector('.work-detail-page')?.classList.toggle('has-preview', !!selectedProject);
 			});
 		});
 
@@ -216,15 +215,11 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 	/* Detail preview area */
 	.preview-container {
 		flex: 2;
-		display: none;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 1rem;
 		min-height: 200px;
-	}
-
-	.work-detail-page.has-preview .preview-container {
-		display: flex;
 	}
 
 	.preview-content {
@@ -277,6 +272,7 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 	.scroll-container {
 		width: 100%;
 		min-width: auto;
+		max-height: 50vh;
 		overflow-y: scroll;
 		scroll-behavior: smooth;
 		scrollbar-width: none;
@@ -381,7 +377,6 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 		}
 
 		.preview-container {
-			display: flex;
 			padding: 2rem 3rem;
 			min-height: auto;
 		}
