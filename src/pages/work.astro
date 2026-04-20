@@ -10,6 +10,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="preview-content">
 				<h2 id="preview-title"></h2>
 				<p id="preview-text"></p>
+				<a id="preview-link" class="preview-link" href="" target="_blank" rel="noopener"></a>
 				<img id="preview-image" src="" alt="" />
 			</div>
 		</div>
@@ -17,60 +18,78 @@ import Layout from '../layouts/Layout.astro';
 		<!-- Right side project list, most recent first -->
 		<div class="scroll-container">
 			<ul class="project-list">
-				<li data-title="Breast Cancer Research - Regenesis MD" data-text="" data-image="">
+				<li
+					data-title="Think Tank AI"
+					data-text="
+
+Designed and developed the production website for Think Tank AI, a boutique ML/AI consulting firm. Built in Astro with vanilla CSS and JS, no component framework or utility library, deployed as a static site. Scope included information architecture, a Web3Forms-backed contact flow, and custom interactive components like a tabbed services module with synchronized content panels."
+					data-image=""
+					data-link="https://ttankai.com"
+					data-link-label="Visit site ↗"
+				>
 					<div class="project-header">
-						<h2>Breast Cancer Research</h2>
-						<span class="tag">data</span>
+						<h2>ttankai.com</h2>
+						<span class="tag">webdev</span>
+						<a class="list-link" href="https://ttankai.com" target="_blank" rel="noopener" aria-label="Visit ttankai.com">↗</a>
 					</div>
-					<p>@ Regenesis MD / Present</p>
+					<p>Apr 2026</p>
 				</li>
-				<li data-title="Brick & Motors" data-text="" data-image="">
+				<li
+					data-title="How Can Disparate Retrieval Methods Work Together Effectively?"
+					data-text="Engineered a hybrid funnel retrieval architecture for fast record lookup on large datasets. Benchmarked sparse methods (TF-IDF, BM25, and SUPER_BM25, a variant I developed) against dense methods (SPLADE, ColBERT), then combined them into a cascading system that cut indexing time by 23.7% and query time by 99% versus ColBERT alone, with comparable recall. Published in the American Journal of Student Research, Vol. 3, Issue 6 (Nov 2025)."
+					data-image=""
+					data-link="https://ajosr.org/papers/volume-3/issue-6/how-can-disparate-retrieval-methods-work-together-effectively/"
+					data-link-label="Read paper ↗"
+				>
+					<div class="project-header">
+						<h2>How Can Disparate Retrieval Methods Work Together Effectively?</h2>
+						<span class="tag">data</span>
+						<span class="tag">paper</span>
+						<a class="list-link" href="https://ajosr.org/papers/volume-3/issue-6/how-can-disparate-retrieval-methods-work-together-effectively/" target="_blank" rel="noopener" aria-label="Read paper">↗</a>
+					</div>
+					<p>Sep 2025</p>
+				</li>
+				<li
+					data-title="Brick & Motors"
+					data-text="Designed and developed the production website for Bricks and Motors, a small educational business introducing kids to STEM. Built in Astro with vanilla CSS and JS, no component framework or utility library, deployed as a static site. Scope included information architecture and a Web3Forms-backed contact flow."
+					data-image=""
+					data-link="https://bricksandmotors.org"
+					data-link-label="Visit site ↗"
+				>
 					<div class="project-header">
 						<h2>bricksandmotors.org</h2>
 						<span class="tag">webdev</span>
+						<a class="list-link" href="https://bricksandmotors.org" target="_blank" rel="noopener" aria-label="Visit bricksandmotors.org">↗</a>
 					</div>
 					<p>Sep 2025</p>
 				</li>
-				<li data-title="Information Retrieval Optimization" data-text="Investigated hybrid retrieval architectures for large-scale generative AI systems, benchmarking sparse methods (TF-IDF, BM25, SUPER_BM25) against dense methods (SPLADE, ColBERT). Designed a hybrid funnel retrieval system that reduced indexing time by 23.7% and query time by 99% compared to ColBERT alone, while maintaining comparable recall. Published in the American Journal of Student Research, Vol. 3, Issue 6 (Nov 2025)." data-image="">
-					<div class="project-header">
-						<h2>Information Retrieval Optimization Research</h2>
-						<span class="tag">data</span>
-						<span class="tag">paper</span>
-					</div>
-					<p>Sep 2025</p>
-				</li>
-				<li data-title="Multimedia Content Production - Red Cross" data-text="" data-image="">
-					<div class="project-header">
-						<h2>Red Cross Multimedia Production</h2>
-						<span class="tag">prod</span>
-					</div>
-					<p>May 2025</p>
-				</li>
-				<li data-title="A Systems Approach to Short-Termism in United States Politics" data-text="" data-image="">
-					<div class="project-header">
-						<h2>Short-Termism in US Politics</h2>
-						<span class="tag">paper</span>
-					</div>
-					<p>Apr 2025</p>
-				</li>
-				<li data-title="J1 Development Studio" data-text="" data-image="">
-					<div class="project-header">
-						<h2>J1 Development Studio</h2>
-						<span class="tag">webdev</span>
-					</div>
-					<p>Feb 2025</p>
-				</li>
-				<li data-title="Westcreek Public School" data-text="" data-image="">
+				<li
+					data-title="Westcreek Public School"
+					data-text="Built a book and author recommendation system for a school library of 5,466 books. Online recommenders kept suggesting titles the library didn't actually stock, so the system works only off the library's own catalog. Enriched the raw inventory with genre data from the Open Library API, with a GPT-4 fallback for the roughly one-third of books not indexed there. Recommendations are computed with cosine similarity across title, author, and genre features, alongside a parallel author-level recommender comparing aggregated genres per author. Shipped as both a web app and a standalone Windows executable for student use."
+					data-image=""
+					data-link="https://github.com/sankalptank/Durham-District-School-Board-Library-Recommendation-System"
+					data-link-label="View repo ↗"
+				>
 					<div class="project-header">
 						<h2>Westcreek Public School Library Recommendation System</h2>
 						<span class="tag">data</span>
+						<a class="list-link" href="https://github.com/sankalptank/Durham-District-School-Board-Library-Recommendation-System" target="_blank" rel="noopener" aria-label="View repository">↗</a>
 					</div>
 					<p>Nov 2024</p>
 				</li>
-				<li data-title="Avance Care North Raleigh" data-text="" data-image="">
+				<li
+					data-title="Dynamic Markdown Article System for Developer Portfolio"
+					data-text="Helped a friend build out his developer portfolio site, focused on a markdown-driven blog system where dropping a .md file into a folder automatically adds it to the blog index. He used it to publish Lua and game dev tutorials. Also handled hosting, responsive behavior, and performance optimization. Design work was his.
+
+"
+					data-image=""
+					data-link="https://defjunior.github.io/portfolio/"
+					data-link-label="Visit site ↗"
+				>
 					<div class="project-header">
-						<h2>Avance Care North Raleigh Financial Analysis</h2>
-						<span class="tag">data</span>
+						<h2>defjunior.github.io/portfolio/</h2>
+						<span class="tag">webdev</span>
+						<a class="list-link" href="https://defjunior.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Visit J1 Development Studio">↗</a>
 					</div>
 					<p>Oct 2024</p>
 				</li>
@@ -84,16 +103,32 @@ import Layout from '../layouts/Layout.astro';
 		const projectItems = document.querySelectorAll('.project-list li');
 		const previewTitle = document.getElementById('preview-title');
 		const previewText = document.getElementById('preview-text');
+		const previewLink = document.getElementById('preview-link') as HTMLAnchorElement | null;
 		const previewImage = document.getElementById('preview-image') as HTMLImageElement | null;
 		let selectedProject: Element | null = null;
 
 		function updatePreview(item: Element) {
-			const title = (item as HTMLElement).dataset.title || '';
-			const text = (item as HTMLElement).dataset.text || '';
-			const image = (item as HTMLElement).dataset.image || '';
+			const el = item as HTMLElement;
+			const title = el.dataset.title || '';
+			const text = el.dataset.text || '';
+			const image = el.dataset.image || '';
+			const link = el.dataset.link || '';
+			const linkLabel = el.dataset.linkLabel || '';
 
 			if (previewTitle) previewTitle.textContent = title;
 			if (previewText) previewText.textContent = text;
+
+			if (previewLink) {
+				if (link) {
+					previewLink.href = link;
+					previewLink.textContent = linkLabel || link;
+					previewLink.style.display = 'inline-block';
+				} else {
+					previewLink.removeAttribute('href');
+					previewLink.textContent = '';
+					previewLink.style.display = 'none';
+				}
+			}
 
 			if (previewImage) {
 				if (image) {
@@ -109,6 +144,11 @@ import Layout from '../layouts/Layout.astro';
 		function resetPreview() {
 			if (previewTitle) previewTitle.textContent = '';
 			if (previewText) previewText.textContent = '';
+			if (previewLink) {
+				previewLink.removeAttribute('href');
+				previewLink.textContent = '';
+				previewLink.style.display = 'none';
+			}
 			if (previewImage) previewImage.style.display = 'none';
 		}
 
@@ -119,7 +159,10 @@ import Layout from '../layouts/Layout.astro';
 				}
 			});
 
-			item.addEventListener('click', () => {
+			item.addEventListener('click', (e) => {
+				// Let the shortcut arrow's click navigate normally — don't toggle preview.
+				if ((e.target as HTMLElement).closest('.list-link')) return;
+
 				if (selectedProject === item) {
 					selectedProject = null;
 					item.classList.remove('selected');
@@ -200,6 +243,21 @@ import Layout from '../layouts/Layout.astro';
 		line-height: 1.6;
 		opacity: 0.9;
 		margin: 0;
+	}
+
+	.preview-link {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.9rem;
+		opacity: 0.7;
+		display: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		padding-bottom: 1px;
+		transition: opacity 0.2s ease;
+	}
+
+	.preview-link:hover {
+		opacity: 1;
 	}
 
 	#preview-image {
@@ -293,6 +351,19 @@ import Layout from '../layouts/Layout.astro';
 		opacity: 0.6;
 	}
 
+	.list-link {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.95rem;
+		opacity: 0.5;
+		padding: 0 0.25rem;
+		transition: opacity 0.2s ease;
+	}
+
+	.list-link:hover {
+		opacity: 1;
+	}
+
 	.project-list li p {
 		font-size: 0.875rem;
 		opacity: 0.7;
@@ -323,6 +394,10 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 1.25rem;
 		}
 
+		.preview-link {
+			font-size: 1.05rem;
+		}
+
 		#preview-image {
 			max-height: 400px;
 		}
@@ -351,6 +426,10 @@ import Layout from '../layouts/Layout.astro';
 
 		.tag {
 			font-size: 0.7rem;
+		}
+
+		.list-link {
+			font-size: 1.1rem;
 		}
 
 		.project-list li p {
