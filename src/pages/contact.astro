@@ -46,8 +46,8 @@ import Layout from '../layouts/Layout.astro';
 	/* Contact wrapper using flexbox for horizontal layout */
 	.contact-wrapper {
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		justify-content: flex-end;
+		align-items: flex-end;
 		height: 100%;
 		flex: 1;
 		gap: 2rem;
@@ -71,9 +71,10 @@ import Layout from '../layouts/Layout.astro';
 	/* Social links container using flexbox for horizontal layout */
 	.social-links {
 		display: flex;
+		flex-direction: row;
 		gap: 1.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
+		flex-wrap: nowrap;
+		align-items: flex-end;
 	}
 
 	/* Remove default link styling */
@@ -118,8 +119,10 @@ import Layout from '../layouts/Layout.astro';
 		}
 
 		.social-links {
+			flex-direction: row;
 			gap: 2rem;
 			flex-wrap: nowrap;
+			align-items: center;
 		}
 
 		.icon-box {
