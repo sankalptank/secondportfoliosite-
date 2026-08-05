@@ -29,8 +29,10 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				>
 					<div class="project-header">
 						<h2>ttankai.com</h2>
-						<span class="tag">webdev</span>
-						<a class="list-link" href="https://ttankai.com" target="_blank" rel="noopener" aria-label="Visit ttankai.com">↗</a>
+						<div class="project-meta">
+							<span class="tag">webdev</span>
+							<a class="list-link" href="https://ttankai.com" target="_blank" rel="noopener" aria-label="Visit ttankai.com">↗</a>
+						</div>
 					</div>
 					<p>Apr 2026</p>
 				</li>
@@ -43,9 +45,11 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				>
 					<div class="project-header">
 						<h2>How Can Disparate Retrieval Methods Work Together Effectively?</h2>
-						<span class="tag">data</span>
-						<span class="tag">paper</span>
-						<a class="list-link" href="https://ajosr.org/papers/volume-3/issue-6/how-can-disparate-retrieval-methods-work-together-effectively/" target="_blank" rel="noopener" aria-label="Read paper">↗</a>
+						<div class="project-meta">
+							<span class="tag">data</span>
+							<span class="tag">paper</span>
+							<a class="list-link" href="https://ajosr.org/papers/volume-3/issue-6/how-can-disparate-retrieval-methods-work-together-effectively/" target="_blank" rel="noopener" aria-label="Read paper">↗</a>
+						</div>
 					</div>
 					<p>Sep 2025</p>
 				</li>
@@ -58,8 +62,10 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				>
 					<div class="project-header">
 						<h2>bricksandmotors.org</h2>
-						<span class="tag">webdev</span>
-						<a class="list-link" href="https://bricksandmotors.org" target="_blank" rel="noopener" aria-label="Visit bricksandmotors.org">↗</a>
+						<div class="project-meta">
+							<span class="tag">webdev</span>
+							<a class="list-link" href="https://bricksandmotors.org" target="_blank" rel="noopener" aria-label="Visit bricksandmotors.org">↗</a>
+						</div>
 					</div>
 					<p>Sep 2025</p>
 				</li>
@@ -72,8 +78,10 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				>
 					<div class="project-header">
 						<h2>Westcreek Public School Library Recommendation System</h2>
-						<span class="tag">data</span>
-						<a class="list-link" href="https://github.com/sankalptank/Durham-District-School-Board-Library-Recommendation-System" target="_blank" rel="noopener" aria-label="View repository">↗</a>
+						<div class="project-meta">
+							<span class="tag">data</span>
+							<a class="list-link" href="https://github.com/sankalptank/Durham-District-School-Board-Library-Recommendation-System" target="_blank" rel="noopener" aria-label="View repository">↗</a>
+						</div>
 					</div>
 					<p>Nov 2024</p>
 				</li>
@@ -88,8 +96,10 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				>
 					<div class="project-header">
 						<h2>defjunior.github.io/portfolio/</h2>
-						<span class="tag">webdev</span>
-						<a class="list-link" href="https://defjunior.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Visit J1 Development Studio">↗</a>
+						<div class="project-meta">
+							<span class="tag">webdev</span>
+							<a class="list-link" href="https://defjunior.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Visit J1 Development Studio">↗</a>
+						</div>
 					</div>
 					<p>Oct 2024</p>
 				</li>
@@ -330,21 +340,36 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 	.project-header {
 		display: flex;
 		align-items: center;
-		gap: 0.4rem;
+		gap: 0.5rem;
 		margin-bottom: 0.25rem;
 	}
 
 	.project-header h2 {
-		flex: 1;
+		flex: 1 1 auto;
+		/* Let long unbreakable titles (URLs) wrap instead of pushing the meta block out. */
+		min-width: 0;
+		overflow-wrap: anywhere;
 		font-size: 1.25rem;
 		margin: 0;
 		font-weight: normal;
 	}
 
+	/* Tags + arrow travel together and never shrink, so the arrow always sits
+	   the same distance from the card's right edge. */
+	.project-meta {
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-left: auto;
+	}
+
 	.tag {
+		flex: 0 0 auto;
 		font-size: 0.625rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		white-space: nowrap;
 		padding: 0.15rem 0.4rem;
 		border: 1px solid rgba(255, 255, 255, 0.3);
 		border-radius: 2px;
@@ -352,11 +377,12 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 	}
 
 	.list-link {
+		flex: 0 0 auto;
 		color: #fff;
 		text-decoration: none;
 		font-size: 0.95rem;
+		line-height: 1;
 		opacity: 0.5;
-		padding: 0 0.25rem;
 		transition: opacity 0.2s ease;
 	}
 
