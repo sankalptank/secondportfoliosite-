@@ -15,7 +15,7 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Sankalp Tank - Developer & Designer Portfolio" />
+		<meta name="description" content="Sankalp Tank - Developer & Journalist Portfolio" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/cat.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -31,14 +31,14 @@ const { title } = Astro.props;
 
 		<!-- Frame border container -->
 		<div class="frame-border">
-			<!-- Main wrapper uses flexbox to create full-height layout -->
-			<div class="site-wrapper">
+			<!-- Nav and page content share one flex container -->
+			<main class="site-wrapper">
 				<!-- Navigation component -->
 				<nav class="main-nav">
 					<!-- Header section with name and title -->
 					<header class="nav-header">
 						<h1 class="name">Sankalp Tank</h1>
-						<p class="subtitle">Developer &<br/>Designer</p>
+						<p class="subtitle">Developer &<br/>Journalist</p>
 						<p class="location">NYC, USA</p>
 					</header>
 
@@ -50,11 +50,9 @@ const { title } = Astro.props;
 					</ul>
 				</nav>
 
-				<!-- Main content area where page content is inserted -->
-				<main class="main-content">
-					<slot />
-				</main>
-			</div>
+				<!-- Page content is inserted directly alongside the nav -->
+				<slot />
+			</main>
 		</div>
 
 		<!-- Dark mask for outside the frame - positioned after frame so it overlays the outer area -->
@@ -146,7 +144,6 @@ const { title } = Astro.props;
 		gap: 1.5rem;
 		min-width: auto;
 		padding: 1rem;
-		border-bottom: 1px solid #fff;
 	}
 
 	@media (min-width: 768px) {
@@ -229,11 +226,10 @@ const { title } = Astro.props;
 		opacity: 0.7;
 	}
 
-	/* Main content area */
-	.main-content {
+	/* Page content sits beside the nav and fills the remaining space */
+	.site-wrapper > :not(.main-nav) {
 		flex: 1;
-		display: flex;
-		flex-direction: column;
+		min-width: 0;
 	}
 
 	/* Utility class for centering content */

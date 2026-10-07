@@ -19,10 +19,24 @@ import Layout from '../layouts/Layout.astro';
 		<div class="scroll-container">
 			<ul class="project-list">
 				<li
+					data-title="SnarlNYC"
+					data-text="Founded Snarl, a monthly data journalism publication on New York City's systems and problems that are unresolved. Each issue is a single story that starts from public city data and is published with open-source code, allowing all analysis to be checked and reused. Designed and developed site in Astro."
+					data-image=""
+					data-link="https://snarlnyc.com"
+					data-link-label="Visit site ↗"
+				>
+					<div class="project-header">
+						<h2>SnarlNYC</h2>
+						<div class="project-meta">
+							<span class="tag">journalism</span>
+							<a class="list-link" href="https://snarlnyc.com" target="_blank" rel="noopener" aria-label="Visit snarlnyc.com">↗</a>
+						</div>
+					</div>
+					<p>Present</p>
+				</li>
+				<li
 					data-title="Think Tank AI"
-					data-text="
-
-Designed and developed the production website for Think Tank AI, a boutique ML/AI consulting firm. Built in Astro with vanilla CSS and JS, no component framework or utility library, deployed as a static site. Scope included information architecture, a Web3Forms-backed contact flow, and custom interactive components like a tabbed services module with synchronized content panels."
+					data-text="Designed, developed production website for Think Tank AI, a boutique ML/AI consulting firm. Built in Astro, no component framework or utility library, deployed as a static site. Project scope includes: information architecture, Web3Forms-backed contact flow, custom, interactive, and responsive components."
 					data-image=""
 					data-link="https://ttankai.com"
 					data-link-label="Visit site ↗"
@@ -38,7 +52,7 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				</li>
 				<li
 					data-title="How Can Disparate Retrieval Methods Work Together Effectively?"
-					data-text="Engineered a hybrid funnel retrieval architecture for fast record lookup on large datasets. Benchmarked sparse methods (TF-IDF, BM25, and SUPER_BM25, a variant I developed) against dense methods (SPLADE, ColBERT), then combined them into a cascading system that cut indexing time by 23.7% and query time by 99% versus ColBERT alone, with comparable recall. Published in the American Journal of Student Research, Vol. 3, Issue 6 (Nov 2025)."
+					data-text="Engineered a hybrid funnel retrieval architecture for fast record lookup on large datasets. Benchmarked sparse methods (TF-IDF, BM25, and SUPER_BM25, a custom variant) against dense methods (SPLADE, ColBERT), then combined them into a cascading system that cut indexing time by 23.7% and query time by 99% versus ColBERT alone, with comparable recall. Published in the American Journal of Student Research, Vol. 3, Issue 6 (Nov 2025)."
 					data-image=""
 					data-link="https://ajosr.org/papers/volume-3/issue-6/how-can-disparate-retrieval-methods-work-together-effectively/"
 					data-link-label="Read paper ↗"
@@ -54,8 +68,8 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 					<p>Sep 2025</p>
 				</li>
 				<li
-					data-title="Brick & Motors"
-					data-text="Designed and developed the production website for Bricks and Motors, a small educational business introducing kids to STEM. Built in Astro with vanilla CSS and JS, no component framework or utility library, deployed as a static site. Scope included information architecture and a Web3Forms-backed contact flow."
+					data-title="Bricks & Motors"
+					data-text="Designed, developed production website for Bricks and Motors, a small educational business introducing kids to STEM. Built in Astro, no component framework or utility library, deployed as a static site. Project scope includes: information architecture, a Web3Forms-backed contact flow."
 					data-image=""
 					data-link="https://bricksandmotors.org"
 					data-link-label="Visit site ↗"
@@ -71,7 +85,7 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 				</li>
 				<li
 					data-title="Westcreek Public School"
-					data-text="Built a book and author recommendation system for a school library of 5,466 books. Online recommenders kept suggesting titles the library didn't actually stock, so the system works only off the library's own catalog. Enriched the raw inventory with genre data from the Open Library API, with a GPT-4 fallback for the roughly one-third of books not indexed there. Recommendations are computed with cosine similarity across title, author, and genre features, alongside a parallel author-level recommender comparing aggregated genres per author. Shipped as both a web app and a standalone Windows executable for student use."
+					data-text="Created book and author recommendation system for school library of 6,000+ books. Online recommenders suggested titles that the library didn't stock; system works only off of the library's catalog. Enriched the raw inventory with genre data from the Open Library API, with a GPT-4 fallback for the roughly one-third of books not indexed there. Recommendations are computed with cosine similarity across title, author, and genre features, alongside a parallel author-level recommender comparing aggregated genres per author. Shipped as both a web app and a standalone Windows executable for student use."
 					data-image=""
 					data-link="https://github.com/sankalptank/Durham-District-School-Board-Library-Recommendation-System"
 					data-link-label="View repo ↗"
@@ -84,24 +98,6 @@ Designed and developed the production website for Think Tank AI, a boutique ML/A
 						</div>
 					</div>
 					<p>Nov 2024</p>
-				</li>
-				<li
-					data-title="Dynamic Markdown Article System for Developer Portfolio"
-					data-text="Helped a friend build out his developer portfolio site, focused on a markdown-driven blog system where dropping a .md file into a folder automatically adds it to the blog index. He used it to publish Lua and game dev tutorials. Also handled hosting, responsive behavior, and performance optimization. Design work was his.
-
-"
-					data-image=""
-					data-link="https://defjunior.github.io/portfolio/"
-					data-link-label="Visit site ↗"
-				>
-					<div class="project-header">
-						<h2>defjunior.github.io/portfolio/</h2>
-						<div class="project-meta">
-							<span class="tag">webdev</span>
-							<a class="list-link" href="https://defjunior.github.io/portfolio/" target="_blank" rel="noopener" aria-label="Visit J1 Development Studio">↗</a>
-						</div>
-					</div>
-					<p>Oct 2024</p>
 				</li>
 			</ul>
 		</div>
